@@ -4,16 +4,15 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import guru.qa.config.ConfigProvider;
-import guru.qa.helpers.Attach;
+import guru.qa.helpers.TestAttachment;
+import guru.qa.pages.AccountPage;
 import guru.qa.pages.GeneralActions;
 import guru.qa.pages.LandingPage;
 import guru.qa.pages.ModalPage;
-import guru.qa.pages.AccountPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -24,10 +23,13 @@ public class TestBase {
     ModalPage modalPage = new ModalPage();
     AccountPage accountPage = new AccountPage();
 
+    public String autotestUserNameAndSurname = ConfigProvider.getTestUserNameAndSurname();
+    public String autotestUserEmail = ConfigProvider.getTestUserEmail();
+    public String autotestUserPassword = ConfigProvider.getTestUserPassword();
+
     @BeforeEach
     public void setUpForTest() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
+        addListener();
         ConfigProvider.configure();
         open(Configuration.baseUrl);
     }
@@ -35,13 +37,21 @@ public class TestBase {
     @AfterEach
     public void completeTest() {
         Selenide.clearBrowserCookies();
+        addTestAttachments();
+        Selenide.closeWebDriver();
+    }
 
+    private void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
+    private void addTestAttachments() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        String attachName = localDateTime.toString();
+        String attachDate = localDateTime.toString();
 
-        Attach.screenshotAs("Screenshot " + attachName);
-        Attach.pageSource("Page source " + attachName);
-        Attach.addVideo("Video " + attachName);
-        Attach.browserConsoleLogs();
+        TestAttachment.screenshotAs("Screenshot " + attachDate);
+        TestAttachment.pageSource("Page source " + attachDate);
+        TestAttachment.addVideo("Video " + attachDate);
+        TestAttachment.browserConsoleLogs();
     }
 }

@@ -5,9 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LoginFormTest extends TestBase {
-    String nameAndSurname = "Vera Smith";
-    String email = "vera.smith711790@mailinator.com";
-    String password = "True?w@nd3r";
 
     @Test
     @Feature("Login")
@@ -16,7 +13,7 @@ public class LoginFormTest extends TestBase {
     @DisplayName("Check login form visibility")
     @Owner("oschastlivtseva")
     public void checkLoginFormVisibilityOnLandingPage() {
-        landingPage.clickLoginButton();
+        landingPage.clickOnLandingPage(landingPage.loginButton);
         generalActions.checkVisibility(modalPage.loginModalWindow);
         modalPage.checkModalTitle("Log In");
         generalActions
@@ -34,18 +31,18 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Successful login")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Check successful login")
+    @DisplayName("Check successful login via email")
     @Owner("oschastlivtseva")
     public void checkSuccessfulLoginViaEmail() {
-        landingPage.clickLoginButton();
+        landingPage.clickOnLandingPage(landingPage.loginButton);
         generalActions.checkVisibility(modalPage.loginModalWindow);
         modalPage
-                .setEmail(email)
-                .setPassword(password);
+                .setEmail(autotestUserEmail)
+                .setPassword(autotestUserPassword);
         generalActions.checkButtonIsEnabled(modalPage.loginSubmitButton);
         modalPage.clickSubmitButton(modalPage.loginSubmitButton);
         generalActions.checkElementIsNotVisible(modalPage.errorAlert);
-        accountPage.checkUserName(nameAndSurname);
+        accountPage.checkUserName(autotestUserNameAndSurname);
         generalActions
                 .checkVisibility(accountPage.courseHeader)
                 .checkThatURLContains("https://www.brainscape.com/l/dashboard/knowledge-rehab", "/decks");
@@ -55,14 +52,14 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Failed login")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Login failed due to invalid email")
+    @DisplayName("Check login failed due to invalid email")
     @Owner("oschastlivtseva")
-    public void checkFailedLoginDueToWrongEmail() {
-        landingPage.clickLoginButton();
+    public void checkLoginFailedDueToWrongEmail() {
+        landingPage.clickOnLandingPage(landingPage.loginButton);
         generalActions.checkVisibility(modalPage.loginModalWindow);
         modalPage
-                .setEmail(email + "123")
-                .setPassword(password);
+                .setEmail(autotestUserEmail + "123")
+                .setPassword(autotestUserPassword);
         generalActions.checkButtonIsEnabled(modalPage.loginSubmitButton);
         modalPage
                 .clickSubmitButton(modalPage.loginSubmitButton)
@@ -74,14 +71,14 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Failed login")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Login failed due to invalid password")
+    @DisplayName("Check login failed due to invalid password")
     @Owner("oschastlivtseva")
-    public void checkFailedLoginDueToWrongPassword() {
-        landingPage.clickLoginButton();
+    public void checkLoginFailedDueToWrongPassword() {
+        landingPage.clickOnLandingPage(landingPage.loginButton);
         generalActions.checkVisibility(modalPage.loginModalWindow);
         modalPage
-                .setEmail(email)
-                .setPassword(password + "123");
+                .setEmail(autotestUserEmail)
+                .setPassword(autotestUserPassword + "123");
         generalActions.checkButtonIsEnabled(modalPage.loginSubmitButton);
         modalPage
                 .clickSubmitButton(modalPage.loginSubmitButton)

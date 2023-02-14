@@ -12,6 +12,8 @@
 
 # Properties files
 *.properties
+!local.properties
+!remote.properties
 
 # Package Files #
 *.jar

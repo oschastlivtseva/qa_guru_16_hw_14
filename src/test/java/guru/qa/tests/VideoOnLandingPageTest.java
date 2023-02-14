@@ -1,12 +1,19 @@
 package guru.qa.tests;
 
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class VideoOnLandingPageTest extends TestBase {
 
     @Test
+    @Feature("Commercial Video")
+    @Story("Video on the Landing page")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Check video on the Landing page")
+    @Owner("oschastlivtseva")
     public void checkVideoOnLandingPage() {
-        landingPage.clickWatchVideoButton();
+        landingPage.clickOnLandingPage(landingPage.watchVideoButton);
         generalActions.checkVisibility(modalPage.videoModalWindow);
         generalActions.checkVisibility(modalPage.closeModalButton);
 
