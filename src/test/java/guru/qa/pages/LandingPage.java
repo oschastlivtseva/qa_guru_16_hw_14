@@ -1,36 +1,19 @@
 package guru.qa.pages;
 
-import com.codeborne.selenide.SelenideElement;
+import guru.qa.pages.elements.Element;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 public class LandingPage {
 
-    private SelenideElement registrationButton = $("#registration-button");
-    public SelenideElement loginButton = $("#login-button");
-    public SelenideElement watchVideoButton = $(".watch-video-button");
+    public Element registrationButton = new Element("'Get Started' button", $("#registration-button"));
+    public Element loginButton = new Element("'Login' button", $("#login-button"));
+    public Element watchVideoButton = new Element("'Watch video' button", $(".watch-video-button"));
 
-
-    public LandingPage clickRegistrationButton() {
-        step("Click registration button", () -> {
-            registrationButton.click();
-        });
-
-        return this;
-    }
-
-    public LandingPage clickLoginButton() {
-        step("Click login button", () -> {
-            loginButton.click();
-        });
-
-        return this;
-    }
-
-    public LandingPage clickWatchVideoButton() {
-        step("Click 'Watch Video' button", () -> {
-            watchVideoButton.click();
+    public LandingPage clickOnLandingPage(Element element) {
+        step("Click on element: " + element.getName(), () -> {
+            element.getElement().click();
         });
 
         return this;

@@ -16,7 +16,7 @@ public class Element {
         return name;
     }
 
-    public SelenideElement getSelenideElement() {
+    public SelenideElement getElement() {
         return selenideElement;
     }
 }

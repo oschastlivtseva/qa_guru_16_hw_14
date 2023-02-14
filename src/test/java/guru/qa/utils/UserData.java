@@ -2,10 +2,10 @@ package guru.qa.utils;
 
 public class UserData {
 
-    private final String firstName,
-            lastName,
-            email,
-            password;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String password;
 
     protected UserData(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

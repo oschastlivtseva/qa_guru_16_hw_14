@@ -10,16 +10,14 @@ public class RegistrationFormTest extends TestBase {
     UserDataGenerator userDataGenerator = new UserDataGenerator();
     UserData userData = userDataGenerator.generateUserData();
 
-    String existingEmail = "vera.smith711790@mailinator.com";
-
     @Test
     @Feature("Registration")
-    @Story("Registration form on Landing page")
+    @Story("Registration form visibility")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Check registration form visibility")
     @Owner("oschastlivtseva")
     public void checkRegistrationFormVisibility() {
-        landingPage.clickRegistrationButton();
+        landingPage.clickOnLandingPage(landingPage.registrationButton);
         generalActions.checkVisibility(modalPage.registrationModalWindow);
         modalPage.checkModalTitle("Get Started");
         generalActions
@@ -38,12 +36,12 @@ public class RegistrationFormTest extends TestBase {
 
     @Test
     @Feature("Registration")
-    @Story("Registration form on Landing page")
+    @Story("Successful registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Successful registration")
+    @DisplayName("Check successful registration")
     @Owner("oschastlivtseva")
     public void checkSuccessfulRegistration() {
-        landingPage.clickRegistrationButton();
+        landingPage.clickOnLandingPage(landingPage.registrationButton);
         generalActions.checkVisibility(modalPage.registrationModalWindow);
         modalPage
                 .setFirstName(userData.getFirstName())
@@ -53,7 +51,6 @@ public class RegistrationFormTest extends TestBase {
                 .confirmPassword(userData.getPassword())
                 .clickAcceptAgreement();
         generalActions.checkButtonIsEnabled(modalPage.registrationSubmitButton);
-
 // TODO: Some of the checks are disabled to avoid the creation of new test accounts
 //        modalPage.clickSubmitButton(modalPage.registrationSubmitButton);
 //        generalActions.checkElementIsNotVisible(modalPage.errorAlert);
@@ -68,17 +65,17 @@ public class RegistrationFormTest extends TestBase {
 
     @Test
     @Feature("Registration")
-    @Story("Registration form on Landing page")
+    @Story("Failed registration")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Registration failed due to existing email")
+    @DisplayName("Check registration failed due to existing email")
     @Owner("oschastlivtseva")
     public void checkFailedRegistration() {
-        landingPage.clickRegistrationButton();
+        landingPage.clickOnLandingPage(landingPage.registrationButton);
         generalActions.checkVisibility(modalPage.registrationModalWindow);
         modalPage
                 .setFirstName(userData.getFirstName())
                 .setLastName(userData.getLastName())
-                .setEmail(existingEmail)
+                .setEmail(autotestUserEmail)
                 .setPassword(userData.getPassword())
                 .confirmPassword(userData.getPassword())
                 .clickAcceptAgreement();

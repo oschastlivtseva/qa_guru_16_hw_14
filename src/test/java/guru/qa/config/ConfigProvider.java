@@ -25,4 +25,22 @@ public class ConfigProvider {
 
         Configuration.browserCapabilities = capabilities;
     }
+
+    public static String getTestUserNameAndSurname() {
+        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
+
+        return config.getTestUserNameAndSurname();
+    }
+
+    public static String getTestUserEmail() {
+        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
+
+        return config.getTestUserEmail();
+    }
+
+    public static String getTestUserPassword() {
+        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
+
+        return config.getTestUserPassword();
+    }
 }
