@@ -10,7 +10,7 @@ public class VideoOnLandingPageTest extends TestBase {
     @Feature("Commercial Video")
     @Story("Video on the Landing page")
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Check video on the Landing page")
+    @DisplayName("Check the video on the Landing page")
     @Owner("oschastlivtseva")
     public void checkVideoOnLandingPage() {
         landingPage.clickOnLandingPage(landingPage.watchVideoButton);

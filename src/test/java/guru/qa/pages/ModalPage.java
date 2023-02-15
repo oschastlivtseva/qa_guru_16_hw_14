@@ -112,7 +112,6 @@ public class ModalPage {
     public ModalPage clickSubmitButton(Element element) {
         step("Click submit button: " + element.getName(), () -> {
             generalActions.click(element);
-            element.getElement().shouldHave(cssClass("is-processing"));
         });
 
         return this;

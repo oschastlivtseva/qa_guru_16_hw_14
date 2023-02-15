@@ -10,7 +10,7 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Login form visibility")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Check login form visibility")
+    @DisplayName("Check the login form visibility")
     @Owner("oschastlivtseva")
     public void checkLoginFormVisibilityOnLandingPage() {
         landingPage.clickOnLandingPage(landingPage.loginButton);
@@ -52,7 +52,7 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Failed login")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Check login failed due to invalid email")
+    @DisplayName("Check login failed due to an invalid email")
     @Owner("oschastlivtseva")
     public void checkLoginFailedDueToWrongEmail() {
         landingPage.clickOnLandingPage(landingPage.loginButton);
@@ -71,7 +71,7 @@ public class LoginFormTest extends TestBase {
     @Feature("Login")
     @Story("Failed login")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Check login failed due to invalid password")
+    @DisplayName("Check login failed due to an invalid password")
     @Owner("oschastlivtseva")
     public void checkLoginFailedDueToWrongPassword() {
         landingPage.clickOnLandingPage(landingPage.loginButton);

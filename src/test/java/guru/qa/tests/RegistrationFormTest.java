@@ -14,7 +14,7 @@ public class RegistrationFormTest extends TestBase {
     @Feature("Registration")
     @Story("Registration form visibility")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Check registration form visibility")
+    @DisplayName("Check the registration form visibility")
     @Owner("oschastlivtseva")
     public void checkRegistrationFormVisibility() {
         landingPage.clickOnLandingPage(landingPage.registrationButton);
@@ -67,7 +67,7 @@ public class RegistrationFormTest extends TestBase {
     @Feature("Registration")
     @Story("Failed registration")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Check registration failed due to existing email")
+    @DisplayName("Check registration failed due to an existing email")
     @Owner("oschastlivtseva")
     public void checkFailedRegistration() {
         landingPage.clickOnLandingPage(landingPage.registrationButton);
