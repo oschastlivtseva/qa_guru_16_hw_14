@@ -49,7 +49,7 @@ After that you can choose a few parameters.
 
 - **Available browsers**: Chrome
 - **Available browser's versions**: 100.0, 99.0
-- **Available browser's size**: 1920x1080, 1366x768, 1024x768
+- **Available browser's size**: 1920x1080, 1536x864, 1366x768
 
 And then you need to click the **Build** button.
 ![Screen of Jenkins build 2](/readMeContent/images/Build.png)
